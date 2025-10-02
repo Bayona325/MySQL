@@ -74,3 +74,21 @@ INSERT INTO `Productos`(`nombre`, `precio_unitario`, `precio_venta`) VALUES
 ('Alpargata', 30.00, 45.00);
 
 SELECT * FROM `Productos`;
+
+INSERT INTO `PedidoProducto`(`pedido_id`, `producto_id`, `cantidad`) VALUES
+(1, 1, 5),
+(1, 1, 2),
+(1, 3, 1),
+(1, 1, 1),
+(2, 5, 1),
+(3, 4, 3),
+(1, 1, 2),
+(4, 7, 1),
+(5, 8, 1),
+(5, 9, 2),
+(6, 10, 1);
+
+SELECT * FROM `Usuarios`;
+SELECT * FROM `Pedidos`;
+SELECT * FROM `PedidoProducto`
+WHERE `pedido_id` = 1;
