@@ -19,5 +19,5 @@ WHERE u.usuario_id = p.usuario_id;
 SELECT u.correo, p.fecha_pedido, p.pedido_id, pr.nombre, pr.precio_unitario, pr.precio_venta, pp.cantidad
 FROM `Usuarios` as u
 INNER JOIN `Pedidos` p ON u.usuario_id = p.usuario_id
-INNER JOIN `PedidoProducto` pp ON pp.pedido_id = pp.pedido_id
-INNER JOIN `Productos` pr ON pr.producto_id = pr.producto_id;
+INNER JOIN `PedidoProducto` pp ON p.pedido_id = pp.pedido_id
+INNER JOIN `Productos` pr ON pp.producto_id = pr.producto_id;
