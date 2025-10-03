@@ -21,3 +21,29 @@ FROM `Usuarios` as u
 INNER JOIN `Pedidos` p ON u.usuario_id = p.usuario_id
 INNER JOIN `PedidoProducto` pp ON p.pedido_id = pp.pedido_id
 INNER JOIN `Productos` pr ON pp.producto_id = pr.producto_id;
+
+
+SELECT u.correo, p.pedido_id, p.fecha_pedido, SUM(pp.cantidad) as 'total_items', pr.nombre
+FROM `Usuarios` as u
+INNER JOIN `Pedidos` p ON u.usuario_id = p.usuario_id
+INNER JOIN `PedidoProducto` pp ON p.pedido_id = pp.pedido_id
+INNER JOIN `Productos` pr ON pp.producto_id = pr.producto_id
+WHERE u.correo = 'adrian@gmail.com'
+GROUP BY p.pedido_id, pr.nombre;
+
+
+
+SELECT u.correo, p.pedido_id, p.fecha_pedido, p.total, pr.nombre, SUM(pp.cantidad) as 'total_items'
+FROM `Usuarios` as u
+INNER JOIN `Pedidos` p ON u.usuario_id = p.usuario_id
+INNER JOIN `PedidoProducto` pp ON p.pedido_id = pp.pedido_id
+INNER JOIN `Productos` pr ON pp.producto_id = pr.producto_id
+GROUP BY p.pedido_id, pr.nombre;
+
+SELECT u.correo, p.pedido_id, p.fecha_pedido, p.total, pr.nombre, SUM(pp.cantidad) as 'total_items'
+FROM `Usuarios` as u
+INNER JOIN `Pedidos` p ON u.usuario_id = p.usuario_id
+INNER JOIN `PedidoProducto` pp ON p.pedido_id = pp.pedido_id
+INNER JOIN `Productos` pr ON pp.producto_id = pr.producto_id
+WHERE pr.nombre = 'Zapato Deportivo'
+GROUP BY p.pedido_id, pr.nombre;

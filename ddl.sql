@@ -9,6 +9,7 @@ CREATE TABLE `Usuarios` (
   `correo` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`usuario_id`)
 );
+
 CREATE TABLE `Pedidos` (
   `pedido_id` int NOT NULL AUTO_INCREMENT,
   `usuario_id` int DEFAULT NULL,
@@ -18,7 +19,6 @@ CREATE TABLE `Pedidos` (
   KEY `usuario_id` (`usuario_id`),
   CONSTRAINT `Pedidos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `Usuarios` (`usuario_id`)
 );
-
 
 
 CREATE TABLE `Productos`(
