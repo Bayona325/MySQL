@@ -115,3 +115,21 @@ UNION select p.nombre as productos, b.nombre as bodegas, m.tipo_movimiento
 from movimientos m
 right join productos p on m.id_producto = p.id_producto
 right join bodegas b on m.id_bodega = b.id_bodega;
+
+create view vista_join_full as select p.nombre as productos, b.nombre as bodegas, m.tipo_movimiento
+from movimientos m  
+left join productos p on m.id_producto = p.id_producto
+left join bodegas b on m.id_bodega = b.id_bodega
+UNION select p.nombre as productos, b.nombre as bodegas, m.tipo_movimiento
+from movimientos m
+right join productos p on m.id_producto = p.id_producto
+right join bodegas b on m.id_bodega = b.id_bodega;
+
+SELECT * FROM vista_join_full;
+SHOW FULL TABLES WHERE TABLE_TYPE LIKE 'VIEW';
+DROP VIEW vista_join_full;
+
+create view vista_producto as select p.nombre as producto, b.nombre as bodegas, m.tipo_movimiento
+from movimientos m
+inner join productos p on m.id_producto = p.id_producto
+inner join bodegas b on m.id_bodega = b.id_bodega;
