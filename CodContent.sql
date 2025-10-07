@@ -24,3 +24,16 @@ docker exec -it mysql_container bash
 docker exec -it mysql_container mysql -u root -p
 docker exec -it mysql_container mysql -h localhost -u root -P 3309 -p
 --docker exec -it (nombre_contenedor) mysql -h localhost -u root -P 3309 -p
+
+--TIPO DE RESTRICCION
+CHECK --CONDICIONAL >=<
+NULL --PUEDE TENER VALORES NULOS O SIN VALOR
+NOT NULL --NO PUEDE TENER VALORES NULOS O SIN VALOR
+UNIQUE --EL DATO ES UNICO Y NO SE PUEDE REPETIR
+
+--INDICES
+--TIENDEN A SER DATOS UNICOS O LLAVES PRIMARIAS
+--CREAR
+CREATE INDEX idx_nombretabla_atributo ON `NombreTabla`(atributo);
+--BORRAR
+DROP INDEX idx_nombretabla_atributo ON `NombreTabla`;

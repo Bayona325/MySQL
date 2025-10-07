@@ -20,6 +20,8 @@ CREATE TABLE `Pedidos` (
   CONSTRAINT `Pedidos_ibfk_1` FOREIGN KEY (`usuario_id_fk`) REFERENCES `Usuarios` (`usuario_id`)
 );
 
+ALTER TABLE `Pedidos` MODIFY `fecha_pedido` date NOT NULL DEFAULT(CURRENT_DATE);
+
 CREATE TABLE `Productos`(
     `producto_id` INT AUTO_INCREMENT,
     `nombre` VARCHAR(50) NOT NULL,
@@ -31,8 +33,13 @@ CREATE TABLE `Productos`(
 CREATE TABLE `PedidoProducto`(
     `pedido_id_fk` INT NOT NULL,
     `producto_id_fk` INT NOT NULL,
-    `cantidad` INT NOT NULL DEFAULT 1,
+    `cantidad` INT NOT NULL DEFAULT 1 CHECK(cantidad >=1),
     PRIMARY KEY(`pedido_id_fk`, `producto_id_fk`),
     FOREIGN KEY(`pedido_id_fk`) REFERENCES `Pedidos`(`pedido_id`),
     FOREIGN KEY(`producto_id_fk`) REFERENCES `Productos`(`producto_id`)
 );
+
+ALTER TABLE `PedidoProducto` ADD CONSTRAINT pedido_producto_chk CHECK(
+  cantidad >=1);
+
+SELECT * FROM Pedidos WHERE fecha_pedido = NULL

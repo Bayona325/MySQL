@@ -85,7 +85,7 @@ change fulltext --(cambio)
 modify
 add
 drop
-notnull
+not null
 
 create index idx_mov_tipo_fecha on movimientos(tipo_movimiento, fecha);
 
